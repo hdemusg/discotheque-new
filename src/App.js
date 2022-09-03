@@ -4,8 +4,18 @@ import GoogleButton from 'react-google-button'
 import { useState } from "react"
 import Button from 'react-bootstrap/Button'
 
+import { Theme } from '@twilio-paste/core/theme';
+import { Box } from '@twilio-paste/box';
+import { Grid, Column } from '@twilio-paste/core/grid';
+import { Label } from '@twilio-paste/core/label';
+import { Input } from '@twilio-paste/core/input';
+import { Card } from '@twilio-paste/core/card';
+import { Heading } from '@twilio-paste/core/heading';
+
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+
+import Dashboard from './Dashboard';
 
 function App() {
 
@@ -21,6 +31,12 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState("")
+  const [username, setUsername] = useState(null);
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setUsername(event.target.username.value);
+  }
 
   const app = initializeApp(firebaseConfig)
   const provider = new GoogleAuthProvider();
@@ -28,13 +44,19 @@ function App() {
 
   console.log(user.displayName)
 
+  function signOutButton() {
+    return (
+      <Button className="bg-[#F00] p-3" onClick={handleSignOut}>Sign Out</Button>
+    )
+  }
+
   function signIn() {
       signInWithPopup(auth, provider).then((result) => {
         console.log('signed in')
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         setUser(result.user)
-        console.log(user)
+        console.log(user.displayName.split(' '))
         setLoggedIn(true);
       }).catch((error) => {
         const errorCode = error.code;
@@ -71,8 +93,13 @@ function App() {
             </GoogleButton>
            </div> : 
            <div>
-            <p className="logintext">{user.displayName}</p>
-            <Button className="bg-[#F00] p-3" onClick={handleSignOut}>Sign Out</Button>{' '}
+            <Theme.Provider theme='default'>
+              <Grid gutter='space30'>
+                <Column span={10} offset={1}>
+                    <Dashboard username={user.displayName.split(' ')[0]} setUsername={setUsername} signOut={handleSignOut} />
+                </Column>
+              </Grid>
+            </Theme.Provider>
            </div>}
           </div>
       </section>
