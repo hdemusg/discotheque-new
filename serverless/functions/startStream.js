@@ -56,6 +56,9 @@ exports.handler = async function(context, event, callback) {
   });
 
   // Create an access token
+  console.log{'SID HERE'}
+  console.log(context.ACCOUNT_SID, context.API_KEY_SID, context.API_KEY_SECRET)
+  console.log('SID DONE')
   const token = new twilio.jwt.AccessToken(context.ACCOUNT_SID, context.API_KEY_SID, context.API_KEY_SECRET);
 
   // Create a video grant

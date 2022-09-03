@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { Flex } from '@twilio-paste/core/flex';
 import { Box } from '@twilio-paste/core/box';
-import Card from 'react-bootstrap/Card';
+import { Card } from '@twilio-paste/core/card';
 import Button from 'react-bootstrap/Button'
 import { Heading } from '@twilio-paste/core/heading';
 import { Grid, Column } from '@twilio-paste/core/grid';
@@ -49,14 +49,14 @@ const Dashboard = ({username, setUsername, signOut}) => {
   }, []);
 
   return (
-    <Card style={{padding: '10px', width: "100%"}}>
+    <Card padding='space70' width='50%'>
       <Grid gutter='space30'>
         <Column span={5}>
           <Box backgroundColor='colorBackground' padding='space70' borderRadius='borderRadius20' textAlign='center'>
             <Flex hAlignContent='center' marginBottom='space50'>
               <Avatar size='sizeIcon100' name='avatar' icon={UserIcon}/>
             </Flex>
-            <Heading as='h3'>Hello, {username}!</Heading>
+            <Heading as='h3' variant='heading40'>Hello, {username}!</Heading>
             <Box marginBottom='space50'>
               {!isStreaming &&
                  <Button className="bg-[#0F0] p-3 m-3" onClick={() => setIsStreaming(true)}>Start a stream!</Button>
