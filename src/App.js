@@ -16,6 +16,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
 import Dashboard from './Dashboard';
+import Navbar from './components/Navbar';
 
 function App() {
 
@@ -80,9 +81,8 @@ function App() {
   return (
     <div className="App">
       <div className='h-full'>
-      <div className="nav">
-        <h1 class="text"> DISCOTHEQUE </h1> 
-      </div>
+     <Navbar/>
+     
       <section className='bg-black justify-center p-10 h-screen flex grow'>
           <div>
            {!loggedIn ? 
