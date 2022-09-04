@@ -20,18 +20,15 @@ const ManageStream = ({username, setError}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const startStream = async (event) => {
-    console.log("bro is the mic on")
     // Call to the backend to create all the resources and start the stream (audio only)
     event.preventDefault();
 
     const streamName = event.target.streamName.value;
 
-    console.log("i swear turn on the mic")
     // While waiting for the API response, setting isLoading to true disables the button
     setIsLoading(true);
 
     try {
-      console.log("ok it's on")  
       const response = await fetch('/startStream', {
         method: 'POST',
         headers: {
@@ -44,9 +41,11 @@ const ManageStream = ({username, setError}) => {
       });
 
       const result = await response.json();
+      console.log(result)
 
       // Get the details back from the server and the token for the video room
       setStreamDetails(result.streamDetails);
+      console.log(streamDetails)
 
       // Join the video room with audio only
       const videoRoom = await connect(result.token, {

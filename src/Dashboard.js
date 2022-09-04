@@ -16,7 +16,7 @@ import { LoadingIcon } from '@twilio-paste/icons/esm/LoadingIcon';
 import StreamPlayer from './StreamPlayer';
 import ManageStream from './ManageStream';
 
-const Dashboard = ({username, setUsername, signOut}) => {
+const Dashboard = ({username, setUsername, signOut, email, icon}) => {
   const [streamList, setStreamList] = useState([]);
   const [isStreaming, setIsStreaming] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -54,9 +54,12 @@ const Dashboard = ({username, setUsername, signOut}) => {
         <Column span={5}>
           <Box backgroundColor='colorBackground' padding='space70' borderRadius='borderRadius20' textAlign='center'>
             <Flex hAlignContent='center' marginBottom='space50'>
-              <Avatar size='sizeIcon100' name='avatar' icon={UserIcon}/>
+            <img
+              src={icon}
+              alt=""
+              />
             </Flex>
-            <Heading as='h3' variant='heading40'>Hello, {username}!</Heading>
+            <Heading as='h3' variant='heading40'>Hello, {username.split(' ')[0]}!</Heading>
             <Box marginBottom='space50'>
               {!isStreaming &&
                  <Button className="bg-[#0F0] p-3 m-3" onClick={() => setIsStreaming(true)}>Start a stream!</Button>

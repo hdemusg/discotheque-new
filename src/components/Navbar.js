@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="justify-between flex w-full items-center">
           <div className=" cursor-pointer flex items-center">
             <img src={Logo} alt="logo" className="h-9 w-9 inline"></img>
-            <h1 className="font-serif hover:text-neutral-50	duration-500 ml-1">
+            <h1 className="hover:text-neutral-50 duration-500 ml-1">
               {" "}
               DISCOTHEQUE{" "}
             </h1>
@@ -19,7 +19,7 @@ export default function Navbar() {
 
           <div className="hidden md:flex justify-around w-full">
             <div className="flex">
-              <h1 className="font-serif hover:text-neutral-50	duration-500">
+              <h1 className="hover:text-neutral-50	duration-500">
                 Join A Session
               </h1>
               <img
@@ -29,7 +29,7 @@ export default function Navbar() {
               ></img>
             </div>
             <div className="flex">
-              <h1 className="font-serif hover:text-neutral-50	duration-500">
+              <h1 className="hover:text-neutral-50	duration-500">
                 Create New Session
               </h1>
               <img

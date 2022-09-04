@@ -1,6 +1,7 @@
 const twilio = require('twilio');
 
 exports.handler = async function(context, event, callback) {
+  console.log('prabhas lifting shivalingam')
   if (!event.streamName) {
     const response = new twilio.Response();
     response.setStatusCode(401);
@@ -60,7 +61,7 @@ exports.handler = async function(context, event, callback) {
   console.log(context.ACCOUNT_SID, context.API_KEY_SID, context.API_KEY_SECRET)
   console.log('SID DONE')
   const token = new twilio.jwt.AccessToken(context.ACCOUNT_SID, context.API_KEY_SID, context.API_KEY_SECRET);
-
+  
   // Create a video grant
   const videoGrant = new twilio.jwt.AccessToken.VideoGrant({
     room: event.streamName

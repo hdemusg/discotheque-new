@@ -33,6 +33,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState("")
   const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null)
+  const [icon, setIcon] = useState(null)
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -57,8 +59,11 @@ function App() {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         setUser(result.user)
-        console.log(user.displayName.split(' '))
+        console.log(result.user)
         setLoggedIn(true);
+        setEmail(result.user.email)
+        setIcon(result.user.photoURL)
+        console.log(email)
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -96,7 +101,7 @@ function App() {
             <Theme.Provider theme='default'>
               <Grid gutter='space30'>
                 <Column span={10} offset={1}>
-                    <Dashboard username={user.displayName.split(' ')[0]} setUsername={setUsername} signOut={handleSignOut} />
+                    <Dashboard username={user.displayName} icon={icon} email={email} setUsername={setUsername} signOut={handleSignOut} />
                 </Column>
               </Grid>
             </Theme.Provider>
