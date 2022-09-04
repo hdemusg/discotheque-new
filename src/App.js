@@ -21,7 +21,7 @@ import Navbar from './components/Navbar';
 function App() {
 
   const firebaseConfig = {
-    apiKey: "AIzaSyBn34l-JAWUrfrS8AbR5Pl8lYeU8cT9k0c",
+    apiKey: "XXXXXXXXXXXXXXXXXXXXXXXXX", // ask us for key
     authDomain: "discotheque-ea90f.firebaseapp.com",
     projectId: "discotheque-ea90f",
     storageBucket: "discotheque-ea90f.appspot.com",
