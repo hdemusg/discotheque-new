@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="justify-between flex w-full items-center">
           <div className=" cursor-pointer flex items-center">
             <img src={Logo} alt="logo" className="h-9 w-9 inline"></img>
-            <h1 className="font-serif hover:text-neutral-50	duration-500 ml-1">
+            <h1 className="hover:text-neutral-50	duration-500 ml-1 font-['Open_Sans']">
               {" "}
               DISCOTHEQUE{" "}
             </h1>
@@ -19,7 +19,7 @@ export default function Navbar() {
 
           <div className="hidden md:flex justify-around w-full">
             <div className="flex">
-              <h1 className="font-serif hover:text-neutral-50	duration-500">
+              <h1 className="font-serif hover:text-neutral-50	duration-500 ml-28">
                 Join A Session
               </h1>
               <img
@@ -41,16 +41,17 @@ export default function Navbar() {
           </div>
           {/* Mobile Navbar Starting */}
           <div className="flex md:hidden">
-            <i
-              className="fas fa-bars mr-2"
-              onClick={() => setIsOpen(!isOpen)}
-            >Menu</i>
+            <i className="fas fa-bars mr-2" onClick={() => setIsOpen(!isOpen)}>
+              Menu
+            </i>
             {isOpen ? (
               <div className="fixed inset-0 w-full h-full bg-orange-600">
                 <i
                   className="fas fa-xmark mr-2 text-2xl mt-4"
                   onClick={() => setIsOpen(!isOpen)}
-                >Close Menu</i>
+                >
+                  Close Menu
+                </i>
                 <div className="flex flex-col h-[70%] justify-center text-xl">
                   <div className="flex justify-center">
                     <h1 className="font-serif hover:text-neutral-50	duration-500">
